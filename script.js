@@ -6,7 +6,7 @@ function getUserRepos() {
         $('.repos').empty();
         let user = $('.candidate-entry').val();
         console.log(user);
-        fetch('https://github.com/users/:'+ user +'/repos')
+        fetch('https://api.github.com/users/'+ user +'/repos')
             .then(response => response.json())
             .then(responseJson => {
                 if (responseJson.code === 404) {
@@ -20,9 +20,11 @@ function getUserRepos() {
 
 function displayResults(responseJson){
     console.log(responseJson);
-    $('.repos').append(
-        `<div>${responseJson.message}</div>` 
-    )
+    for (let i = 0; i < responseJson.length; i++) {
+        $('.repos').append(
+            `<p>${responseJson.name[i]}</p>` 
+        )
+    }
     $('.results').removeClass('hidden');
 }
 
