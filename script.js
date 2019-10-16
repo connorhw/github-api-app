@@ -22,7 +22,10 @@ function displayResults(responseJson){
     console.log(responseJson);
     for (let i = 0; i < responseJson.length; i++) {
         $('.repos').append(
-            `<p>${responseJson[i].name}</p>` 
+            `<p>
+                ${responseJson[i].name}
+                <a href="${responseJson[i].html_url}" target="_blank" >link</a>
+            </p>` 
         )
     }
     $('.results').removeClass('hidden');
