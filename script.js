@@ -21,7 +21,7 @@ function getUserRepos() {
 function displayResults(responseJson){
     console.log(responseJson);
     $('.repos').append(
-        `test..test..test` 
+        `<div>${responseJson.message}</div>` 
     )
     $('.results').removeClass('hidden');
 }
